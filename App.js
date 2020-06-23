@@ -1,19 +1,31 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { View, StyleSheet } from 'react-native';
+import AddItem from "./app/components/AddItem";
+import ItemsList from "./app/components/ItemsList";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+import { allReducers } from "./app/reducers";
+
+const store = createStore(allReducers);
+store.subscribe(() => console.log(store.getState()));
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
+    <Provider store={store}>
+      <View style={styles.container}>
+        <AddItem style={styles.add} />
+        <ItemsList />
+      </View>
+    </Provider>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    padding: 20,
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-end'
   },
+
+
 });
