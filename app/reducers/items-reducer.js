@@ -6,7 +6,9 @@ export const itemsReducer = (state = [], action) => {
             return [...state, item];
 
         case "DELETE_ITEM":
-            return 'a';
+            const list = [...state];
+            list.splice(list.indexOf(action.payload), 1)
+            return list;
 
         default:
             return state;

@@ -7,7 +7,6 @@ import { Provider } from "react-redux";
 import { allReducers } from "./app/reducers";
 
 const store = createStore(allReducers);
-store.subscribe(() => console.log(store.getState()));
 
 export default function App() {
   return (
@@ -26,6 +25,4 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end'
   },
-
-
 });
